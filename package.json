@@ -1,0 +1,36 @@
+{
+  "name": "mmm-edgerouter-throughput",
+  "version": "0.0.0",
+  "description": "A MagicMirror² Module to show the Interface throughput of an Ubiquity EdgeRouter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "dev": "rollup -c --sourcemap=inline",
+    "watch": "npm run dev -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mscharl/MMM-edgerouter-throughput.git"
+  },
+  "keywords": [
+    "MagicMirror",
+    "MagicMirror2",
+    "Module",
+    "EdgeRouter",
+    "Throughput",
+    "Bandwith"
+  ],
+  "author": "Michael Scharl <michael.scharl@me.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mscharl/MMM-edgerouter-throughput/issues"
+  },
+  "homepage": "https://github.com/mscharl/MMM-edgerouter-throughput#readme",
+  "devDependencies": {
+    "rollup": "^1.17.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.5.3"
+  }
+}
