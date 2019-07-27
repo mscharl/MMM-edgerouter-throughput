@@ -29,6 +29,7 @@
   "homepage": "https://github.com/mscharl/MMM-edgerouter-throughput#readme",
   "devDependencies": {
     "rollup": "^1.17.0",
+    "rollup-plugin-banner": "^0.2.0",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^1.10.0",
     "typescript": "^3.5.3"
