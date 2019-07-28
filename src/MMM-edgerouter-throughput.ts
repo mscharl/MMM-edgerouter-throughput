@@ -1,10 +1,3 @@
-/*! MMM-edgerouter-throughput
- *  The Module Core File
- *
- * By Michael Scharl https://michael.scharl.me
- * MIT Licensed.
- */
-
 const DOM_INSTANCES: { [key: string]: DomTree } = {};
 
 interface DomTree {
