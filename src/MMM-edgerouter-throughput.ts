@@ -1,3 +1,7 @@
+import prettyBytes from 'pretty-bytes';
+import { ModuleNotification } from './constants/ModuleNotification';
+import Config, { DataConfig } from './types/Config';
+
 const DOM_INSTANCES: { [key: string]: DomTree } = {};
 
 interface DomTree {
@@ -8,7 +12,7 @@ interface DomTree {
     down: HTMLSpanElement,
 }
 
-Module.register('MMM-edgerouter-throughput', {
+Module.register<Config>('MMM-edgerouter-throughput', {
     /**
      * Define the default instance config
      */
@@ -17,11 +21,18 @@ Module.register('MMM-edgerouter-throughput', {
         gateway: '192.168.0.1',
         username: 'ubnt',
         password: 'ubnt',
-        interface: 'eth0',
 
         // Appearance Configuration.
-        title: null,
+        title: undefined,
         showInterfaceName: true,
+        interface: 'eth0',
+    },
+
+    _throughputData: {},
+    _lastThroughputData: {},
+
+    start() {
+        this.sendSocketNotification(ModuleNotification.CONFIG, this.config);
     },
 
     /**
@@ -29,13 +40,37 @@ Module.register('MMM-edgerouter-throughput', {
      */
     getDom(): HTMLElement {
         const { down, interfaceName, root, title, up } = this._getDomInstance();
+        const { config } = this;
 
-        title.innerText = this.config.title;
-        interfaceName.innerText = this.config.interface;
-        up.innerText = '';
-        down.innerText = '';
+        title.innerText = config.title;
+        interfaceName.innerText = config.interface;
+
+        if (this._lastThroughputData[config.gateway] &&
+            this._lastThroughputData[config.gateway][config.interface] &&
+            this._throughputData[config.gateway] &&
+            this._throughputData[config.gateway][config.interface]
+        ) {
+            const lastTxBytes = this._lastThroughputData[config.gateway][config.interface].tx_bytes;
+            const currentTxBytes = this._throughputData[config.gateway][config.interface].tx_bytes;
+            const lastRxBytes = this._lastThroughputData[config.gateway][config.interface].rx_bytes;
+            const currentRxBytes = this._throughputData[config.gateway][config.interface].rx_bytes;
+
+            const txRate = currentTxBytes - lastTxBytes;
+            const rxRate = currentRxBytes - lastRxBytes;
+
+            up.innerText = prettyBytes(txRate) + '/s';
+            down.innerText = prettyBytes(rxRate) + '/s';
+        }
 
         return root;
+    },
+
+    socketNotificationReceived(notifiction, payload) {
+        switch (notifiction) {
+            case ModuleNotification.THROUGHPUT:
+                this._setThroughputData(payload);
+                break;
+        }
     },
 
     _getDomInstance(): DomTree {
@@ -107,5 +142,11 @@ Module.register('MMM-edgerouter-throughput', {
         }
 
         return DOM_INSTANCES[identifier];
+    },
+
+    _setThroughputData(data: object) {
+        this._lastThroughputData = this._throughputData;
+        this._throughputData = data;
+        this.updateDom();
     },
 });
