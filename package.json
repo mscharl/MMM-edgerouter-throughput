@@ -1,6 +1,6 @@
 {
   "name": "mmm-edgerouter-throughput",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A MagicMirror² Module to show the Interface throughput of an Ubiquity EdgeRouter",
   "main": "index.js",
   "scripts": {
