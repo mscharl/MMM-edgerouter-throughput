@@ -99,14 +99,8 @@
 	     * Define the default instance config
 	     */
 	    defaults: {
-	        // Data Configuration.
-	        gateway: '192.168.0.1',
-	        username: 'ubnt',
-	        password: 'ubnt',
-	        // Appearance Configuration.
 	        title: undefined,
 	        showInterfaceName: true,
-	        interface: 'eth0',
 	    },
 	    _throughputData: {},
 	    _lastThroughputData: {},

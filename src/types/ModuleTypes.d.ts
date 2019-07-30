@@ -1,5 +1,5 @@
 declare type ModuleProperties<C = object> = {
-    defaults?: C,
+    defaults?: Partial<C>,
     start?(): void,
     getHeader?(): string,
     getTemplate?(): string,
