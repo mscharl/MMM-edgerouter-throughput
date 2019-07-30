@@ -103,7 +103,7 @@
             var _this = this;
             setInterval(function () {
                 _this._fetchData();
-            }, 5000);
+            }, 1000);
         },
         /**
          * Stop the interval and close the connections.

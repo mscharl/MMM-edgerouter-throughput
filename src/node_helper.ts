@@ -22,7 +22,7 @@ module.exports = NodeHelper.create({
     start() {
         setInterval(() => {
             this._fetchData();
-        }, 5000);
+        }, 1000);
     },
 
     /**
