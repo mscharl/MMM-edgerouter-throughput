@@ -101,6 +101,7 @@
 	    defaults: {
 	        title: undefined,
 	        showInterfaceName: true,
+	        port: 22
 	    },
 	    _throughputData: {},
 	    _lastThroughputData: {},

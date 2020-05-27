@@ -19,6 +19,7 @@ Module.register<Config>('MMM-edgerouter-throughput', {
     defaults: {
         title: undefined,
         showInterfaceName: true,
+        port: 22
     },
 
     _throughputData: {},

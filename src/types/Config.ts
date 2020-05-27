@@ -1,5 +1,6 @@
 export interface DataConfig {
     gateway: string,
+    port: number,
     username: string,
     password: string,
 }
