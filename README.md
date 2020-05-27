@@ -14,14 +14,15 @@ The Module uses SSH to connect to the router and reads the network throughput fr
 
 ## Configuration
 
-| Property            | Type      | Required | Default       | Description                                       |
-|---------------------|-----------|:--------:|---------------|---------------------------------------------------|
-| `gateway`           | `string`  |     ✔︎    |               | The IP Address of your EdgeRouter                 |
-| `username`          | `string`  |     ✔︎    |               | The username of your EdgeRouter with SSH access.  |
-| `password`          | `string`  |     ✔︎    |               | The password of your EdgeRouter with SSH access.  |
-| `interface`         | `string`  |     ✔︎    |               | The interface to display on the mirror.           |
-| `title`             | `string`  |          | `undefined`   | An optional title to display on the mirror.       |
-| `showInterfaceName` | `boolean` |          | `false`       | Whether to show the name of the interface or not. |
+| Property            | Type      | Required | Default     | Description                                          |
+| ------------------- | --------- | :------: | ----------- | ---------------------------------------------------- |
+| `gateway`           | `string`  |    ✔︎     |             | The IP Address of your EdgeRouter                    |
+| `port`              | `number`  |          |             | The SSH port your EdgeRouter listens on (22 default) |
+| `username`          | `string`  |    ✔︎     |             | The username of your EdgeRouter with SSH access.     |
+| `password`          | `string`  |    ✔︎     |             | The password of your EdgeRouter with SSH access.     |
+| `interface`         | `string`  |    ✔︎     |             | The interface to display on the mirror.              |
+| `title`             | `string`  |          | `undefined` | An optional title to display on the mirror.          |
+| `showInterfaceName` | `boolean` |          | `false`     | Whether to show the name of the interface or not.    |
 
 ## Compatibility
 

@@ -102,12 +102,13 @@ module.exports = NodeHelper.create({
      * @private
      */
     async _setupSSHClient(config: DataConfig) {
-        const { gateway, username, password } = config;
+        const { gateway, port, username, password } = config;
 
         if (!this.sshClients[gateway]) {
             try {
                 this.sshClients[gateway] = await new SSH({
                     host: gateway,
+                    port,
                     username,
                     password,
                 });

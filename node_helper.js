@@ -13,9 +13,9 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('ssh2-promise')) :
     typeof define === 'function' && define.amd ? define(['ssh2-promise'], factory) :
     (global = global || self, factory(global.SSH));
-}(this, function (SSH) { 'use strict';
+}(this, (function (SSH) { 'use strict';
 
-    SSH = SSH && SSH.hasOwnProperty('default') ? SSH['default'] : SSH;
+    SSH = SSH && Object.prototype.hasOwnProperty.call(SSH, 'default') ? SSH['default'] : SSH;
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -184,11 +184,11 @@
          */
         _setupSSHClient: function (config) {
             return __awaiter(this, void 0, void 0, function () {
-                var gateway, username, password, _a, _b, error_1;
+                var gateway, port, username, password, _a, _b, error_1;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
-                            gateway = config.gateway, username = config.username, password = config.password;
+                            gateway = config.gateway, port = config.port, username = config.username, password = config.password;
                             if (!!this.sshClients[gateway]) return [3 /*break*/, 4];
                             _c.label = 1;
                         case 1:
@@ -197,6 +197,7 @@
                             _b = gateway;
                             return [4 /*yield*/, new SSH({
                                     host: gateway,
+                                    port: port,
                                     username: username,
                                     password: password,
                                 })];
@@ -216,4 +217,4 @@
         },
     });
 
-}));
+})));
